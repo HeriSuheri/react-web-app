@@ -1,0 +1,121 @@
+#contact {
+  background: #dedede;
+  /* background-image: url("http://codingstella.com/wp-content/uploads/2024/01/download-6-scaled.jpeg"); */
+  background-image: url("../assets/img/img-contact3.jpg");
+  background-position-y: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 50px 0px 50px 0px;
+}
+
+.footer {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.footer-section {
+  width: 50%;
+  margin: 0 10;
+}
+
+.footer-section p {
+  color: #dedede;
+}
+
+.footer-section h3 {
+  color: #dedede;
+}
+
+.footer-section .address {
+  margin-bottom: 40px;
+}
+
+.footer-section .address p {
+  margin-top: -10px;
+}
+
+.footer-section .address .wa img {
+  margin-right: 10px;
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+}
+
+.footer-section .address .email img {
+  margin-right: 10px;
+  height: 20px;
+  width: 20px;
+}
+
+.footer-section .join .linkedin img {
+  margin-right: 10px;
+  height: 20px;
+  width: 40px;
+  border-radius: 10px;
+}
+
+.footer-section .join .github img {
+  margin-right: 10px;
+  height: 20px;
+  width: 40px;
+  border-radius: 10px;
+}
+
+.footer-section .join .instagram img {
+  margin-right: 10px;
+  height: 20px;
+  width: 40px;
+  border-radius: 10px;
+}
+
+.footer-section .join .facebook img {
+  margin-right: 10px;
+  height: 20px;
+  width: 40px;
+  border-radius: 10px;
+}
+
+.footer-section .join .youtube img {
+  margin-right: 10px;
+  height: 20px;
+  width: 40px;
+  border-radius: 10px;
+}
+
+.footer-section .address .wa {
+  margin-top: -15px;
+  color: #dedede;
+}
+
+.footer-section .address .email {
+  color: #dedede;
+}
+
+.footer-section .join .linkedin {
+  color: #dedede;
+}
+
+.footer-section .join .github {
+  color: #dedede;
+}
+
+.footer-section .join .instagram {
+  color: #dedede;
+}
+
+.footer-section .join .facebook {
+  color: #dedede;
+}
+
+.footer-section .join .youtube {
+  color: #dedede;
+}
+
+.footer-section .join p {
+  margin-top: -10px;
+}
