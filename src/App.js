@@ -12,6 +12,7 @@ import ContainerBN from "./layout";
 
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
       {/* <ContainerBN> */}
         <Route exact path={pathNameCONFIG.ROOT_URL} component={Home} />
         <Route exact path={pathNameCONFIG.LOGIN} component={Login} />
+        <Route exact path={pathNameCONFIG.DASHBOARD} component={Dashboard} />
       {/* </ContainerBN> */}
     </Switch>
   );
