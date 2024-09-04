@@ -89,11 +89,11 @@ const SuccessConfirmation = ({
               position: "relative",
               textAlign: "center",
               "@media screen and (min-width: 565px)": {
-                width: "600px",
-                height: "600px",
+                width: "480px",
+                height: "480px",
               },
               "@media screen and (max-width: 564px)": {
-                width: "90%",
+                width: "70%",
                 height: "auto",
               },
             }}
