@@ -29,18 +29,17 @@ a:hover {
 }
 
 .zoom {
-  transition: transform .2s;
+  transition: transform 0.2s;
 }
 
 .zoom:hover {
   -ms-transform: scale(1.5); /* IE 9 */
   -webkit-transform: scale(1.5); /* Safari 3-8 */
-  transform: scale(1.5); 
+  transform: scale(1.5);
 }
 
-
-.wrapper1 {
-  background-image: url("http://codingstella.com/wp-content/uploads/2024/01/download-6-scaled.jpeg");
+.wrapper3 {
+  background-image: url("https://media.istockphoto.com/id/808424876/id/foto/bidang-input-kata-sandi-dengan-gembok.jpg?s=1024x1024&w=is&k=20&c=xh9avYwzV6p21z1Oq_BMsLtPen1G67nHSB5StfU0SPk=");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -52,6 +51,35 @@ a:hover {
   min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.2);
 }
+
+.wrapper2 {
+  background-image: url("https://media.istockphoto.com/id/1339983676/id/foto/menyentuh-konsep-pemasaran-email-orang-yang-membaca-email-di-smartphone-menerima-pesan-baru.jpg?s=1024x1024&w=is&k=20&c=nisxK5rJq-QeV7-zdI2wD31lOszFIHu68mHf27fSSTM=");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.wrapper1 {
+  background-image: url("https://media.istockphoto.com/id/1777088857/id/foto/konsep-keamanan-digital.jpg?s=1024x1024&w=is&k=20&c=8FVwviAXiGDjOm6xm7emZ4OHB4i1HJfgEUgCyHFn3kg=");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 
 .login_box {
   position: relative;
@@ -74,6 +102,20 @@ a:hover {
   justify-content: center;
   background-color: var(--primary-color);
   width: 140px;
+  height: 70px;
+  border-radius: 0 0 20px 20px;
+}
+
+.login-header-forgot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  width: 200px;
   height: 70px;
   border-radius: 0 0 20px 20px;
 }
@@ -138,8 +180,7 @@ a:hover {
 }
 
 .input-field:focus ~ .label,
-.input-field:valid .label {
-  /* Added missing closing brace here */
+.input-field:valid ~ .label {
   position: absolute;
   top: -10px;
   left: 20px;
@@ -148,7 +189,39 @@ a:hover {
   border-radius: 30px;
   color: var(--black-color);
   padding: 0 10px;
-} /* Closed the missing brace */
+}
+
+.labelConf {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  transition: 0.2s;
+}
+
+.input-field-conf:focus ~ .labelConf,
+.input-field-conf:valid ~ .labelConf {
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  font-size: 14px;
+  background-color: var(--primary-color);
+  border-radius: 30px;
+  color: var(--black-color);
+  padding: 0 10px;
+}
+
+.input-field-conf {
+  width: 100%;
+  height: 55px;
+  font-size: 16px;
+  background: transparent;
+  color: var(--second-color);
+  padding-inline: 20px 50px;
+  border: 2px solid var(--primary-color);
+  border-radius: 30px;
+  outline: none;
+}
+
 
 .icon {
   position: absolute;
@@ -159,7 +232,7 @@ a:hover {
 
 .remember-forgot {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   font-size: 15px;
 }
 
@@ -202,4 +275,18 @@ a:hover {
   .login_box {
     padding: 7.5em 1.5em 4em 1.5em;
   }
+}
+
+.error-user {
+  margin: -25px 15px 25px 15px;
+  font-size: 0.9em;
+}
+
+.errors {
+  font-size: 13;
+  color:#FF0000;
+  /* position: "absolute"; */
+  /* // left: 0; */
+  margin-left: -10px;
+  transition: 0.3s ease-in-out;
 }
