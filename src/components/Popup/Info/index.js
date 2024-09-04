@@ -88,14 +88,14 @@ const SuccessConfirmation = ({
               borderRadius: 20,
               position: "relative",
               textAlign: "center",
-              // "@media screen and (min-width: 768px)": {
-              //   width: "600px",
-              //   height: "600px",
-              // },
-              // "@media screen and (max-width: 767px)": {
-              //   width: "90%",
-              //   height: "auto",
-              // },
+              "@media screen and (min-width: 565px)": {
+                width: "600px",
+                height: "600px",
+              },
+              "@media screen and (max-width: 564px)": {
+                width: "90%",
+                height: "auto",
+              },
             }}
           >
             {closeModal ? (
