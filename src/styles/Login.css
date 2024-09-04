@@ -268,7 +268,15 @@ a:hover {
 }
 
 @media only screen and (max-width: 564px) {
-  .wrapper {
+  .wrapper1 {
+    padding: 20px;
+  }
+
+  .wrapper2 {
+    padding: 20px;
+  }
+
+  .wrapper3 {
     padding: 20px;
   }
 
@@ -290,3 +298,37 @@ a:hover {
   margin-left: -10px;
   transition: 0.3s ease-in-out;
 }
+
+@media screen and (max-width: 564px) {
+  .wrapper1 {
+    width: 90%; 
+    height: auto; 
+  }
+
+  .wrapper2 {
+    width: 90%; 
+    height: auto; 
+  }
+
+  .wrapper3 {
+    width: 90%; 
+    height: auto; 
+  }
+}
+
+/* @media screen and (min-width: 565px) {
+  .wrapper1 {
+    width: 600px; 
+    height: 600px; 
+  }
+
+  .wrapper2 {
+    width: 600px; 
+    height: 600px; 
+  }
+
+  .wrapper3 {
+    width: 600px; 
+    height: 600px; 
+  }
+} */
