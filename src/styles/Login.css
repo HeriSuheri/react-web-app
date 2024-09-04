@@ -268,7 +268,11 @@ a:hover {
 }
 
 @media only screen and (max-width: 564px) {
-  .wrapper1 {
+  .wrapper {
+    padding: 20px;
+  }
+
+  /* .wrapper1 {
     padding: 20px;
   }
 
@@ -278,7 +282,7 @@ a:hover {
 
   .wrapper3 {
     padding: 20px;
-  }
+  } */
 
   .login_box {
     padding: 7.5em 1.5em 4em 1.5em;
@@ -299,7 +303,7 @@ a:hover {
   transition: 0.3s ease-in-out;
 }
 
-@media screen and (max-width: 564px) {
+/* @media screen and (max-width: 564px) {
   .wrapper1 {
     width: 90%; 
     height: auto; 
@@ -314,7 +318,7 @@ a:hover {
     width: 90%; 
     height: auto; 
   }
-}
+} */
 
 /* @media screen and (min-width: 565px) {
   .wrapper1 {

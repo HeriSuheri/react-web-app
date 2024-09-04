@@ -88,14 +88,14 @@ const SuccessConfirmation = ({
               borderRadius: 20,
               position: "relative",
               textAlign: "center",
-              "@media screen and (min-width: 768px)": {
-                width: "600px" /* Width for tablets and larger screens */,
-                height: "600px" /* Fixed height for larger screens */,
-              },
-              "@media screen and (max-width: 767px)": {
-                width: "90%" /* Width for mobile screens */,
-                height: "auto" /* Adjust height automatically */,
-              },
+              // "@media screen and (min-width: 768px)": {
+              //   width: "600px",
+              //   height: "600px",
+              // },
+              // "@media screen and (max-width: 767px)": {
+              //   width: "90%",
+              //   height: "auto",
+              // },
             }}
           >
             {closeModal ? (
