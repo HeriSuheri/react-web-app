@@ -68,19 +68,28 @@ const SuccessConfirmation = ({
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          width: "600px",
-          height: "600px",
+          width: "450px",
+          height: "450px",
           padding: "20px",
+          borderRadius: 20,
           backgroundColor: "white",
           boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
           zIndex: "1000",
+          "@media screen and (min-width: 565px)": {
+            width: "450px",
+            height: "450px",
+          },
+          "@media screen and (max-width: 564px)": {
+            width: "50%",
+            height: "auto",
+          },
         }}
       >
         <Fade in={isOpen}>
           <div
             style={{
               height,
-              width: 480,
+              width: "400px",
               backgroundColor: "#fff",
               border: "1px solid #BCC8E7",
               padding: closeModal ? 30 : 32,
@@ -89,11 +98,11 @@ const SuccessConfirmation = ({
               position: "relative",
               textAlign: "center",
               "@media screen and (min-width: 565px)": {
-                width: "480px",
-                height: "480px",
+                width: "400px",
+                height: "400px",
               },
               "@media screen and (max-width: 564px)": {
-                width: "70%",
+                width: "50%",
                 height: "auto",
               },
             }}
@@ -153,7 +162,7 @@ const SuccessConfirmation = ({
               <div
                 style={{
                   fontFamily: "FuturaBkBT",
-                  fontSize: 25,
+                  fontSize: 15,
                   color: Colors.dark.hard,
                 }}
               >
@@ -163,7 +172,7 @@ const SuccessConfirmation = ({
               {button ? (
                 <GeneralButton
                   label="OK"
-                  width="380px"
+                  width="200px"
                   height="40px"
                   onClick={handleClose}
                   style={{
