@@ -212,11 +212,12 @@ function Registrasi() {
         ) : null}
 
         <div className="regis">
-          <div>Already have an account ? </div>
+          <div className="text">Already have an account ? </div>
           <div className="zoom">
             <Link
+              className="text"
               to={pathNameCONFIG.LOGIN}
-              style={{ color: "white", marginLeft: "10px" }}
+              style={{ color: "white" }}
             >
               Login
             </Link>

@@ -142,7 +142,7 @@ function Login() {
 
             <div className="forgot">
               <div className="zoom">
-                <Link to={pathNameCONFIG.FORGOT_PASSWORD}>
+                <Link to={pathNameCONFIG.FORGOT_PASSWORD}  className="text">
                   Forgot password?
                 </Link>
               </div>
@@ -174,27 +174,25 @@ function Login() {
           ) : null}
 
           <div className="regis">
-            <div>Don't have an account ? </div>
+            <div className="text">Don't have an account ? </div>
             <div className="zoom">
               <Link
+                className="text"
                 to={pathNameCONFIG.REGISTRASI}
-                style={{ color: "blue", marginLeft: "10px" }}
+                style={{ color: "blue"}}
               >
                 Sign Up
               </Link>
             </div>
           </div>
           <div className="regis">
-            <div>Back to </div>
+            <div className="text">Back to </div>
             <div className="zoom">
               <Link
                 to={pathNameCONFIG.ROOT_URL}
-                className="zoom"
+                className="text"
                 style={{
                   color: "blue",
-                  marginLeft: "10px",
-                  fontWeight: "50px",
-                  fontSize: "20px",
                 }}
               >
                 HOME

@@ -30,6 +30,7 @@ a:hover {
 
 .zoom {
   transition: transform 0.2s;
+  margin-left: 5px;
 }
 
 .zoom:hover {
@@ -80,7 +81,6 @@ a:hover {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-
 .login_box {
   position: relative;
   width: 450px;
@@ -103,6 +103,7 @@ a:hover {
   background-color: var(--primary-color);
   width: 140px;
   height: 70px;
+  font-size: 25px;
   border-radius: 0 0 20px 20px;
 }
 
@@ -114,9 +115,11 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #000000;
   background-color: var(--primary-color);
   width: 200px;
-  height: 70px;
+  height: 75px;
+  font-size: 25px;
   border-radius: 0 0 20px 20px;
 }
 
@@ -152,7 +155,7 @@ a:hover {
 .input_box {
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin: 20px 0;
 }
 
@@ -222,7 +225,6 @@ a:hover {
   outline: none;
 }
 
-
 .icon {
   position: absolute;
   top: 18px;
@@ -259,34 +261,12 @@ a:hover {
 .regis {
   text-align: center;
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   justify-content: center;
 }
 
 .register a {
   font-weight: 500;
-}
-
-@media only screen and (max-width: 564px) {
-  .wrapper {
-    padding: 20px;
-  }
-
-  /* .wrapper1 {
-    padding: 20px;
-  }
-
-  .wrapper2 {
-    padding: 20px;
-  }
-
-  .wrapper3 {
-    padding: 20px;
-  } */
-
-  .login_box {
-    padding: 7.5em 1.5em 4em 1.5em;
-  }
 }
 
 .error-user {
@@ -296,43 +276,124 @@ a:hover {
 
 .errors {
   font-size: 13;
-  color:#FF0000;
-  /* position: "absolute"; */
-  /* // left: 0; */
+  color: #ff0000;
   margin-left: -10px;
   transition: 0.3s ease-in-out;
 }
 
-/* @media screen and (max-width: 564px) {
-  .wrapper1 {
-    width: 90%; 
-    height: auto; 
+/* @media only screen and (max-width: 767px) {
+  .wrapper {
+    padding: 20px;
   }
 
-  .wrapper2 {
-    width: 90%; 
-    height: auto; 
-  }
-
-  .wrapper3 {
-    width: 90%; 
-    height: auto; 
+  .login_box {
+    padding: 7.5em 1.5em 4em 1.5em;
   }
 } */
 
-/* @media screen and (min-width: 565px) {
+/* RESPONSIVE LOGIN - REGISTRASI - FORGOT */
+@media screen and (max-width: 767px) {
   .wrapper1 {
-    width: 600px; 
-    height: 600px; 
+    width: auto;
+    height: auto;
+    background-image: url("https://media.istockphoto.com/id/1777088857/id/foto/konsep-keamanan-digital.jpg?s=1024x1024&w=is&k=20&c=8FVwviAXiGDjOm6xm7emZ4OHB4i1HJfgEUgCyHFn3kg=");
+    background-size: 100% 100%;
+    background-position-x: right 30px;
+    background-repeat: repeat;
   }
 
   .wrapper2 {
-    width: 600px; 
-    height: 600px; 
+    width: auto;
+    height: auto;
+    background-image: url("https://media.istockphoto.com/id/1339983676/id/foto/menyentuh-konsep-pemasaran-email-orang-yang-membaca-email-di-smartphone-menerima-pesan-baru.jpg?s=1024x1024&w=is&k=20&c=nisxK5rJq-QeV7-zdI2wD31lOszFIHu68mHf27fSSTM=");
+    background-size: 100% 100%;
+    background-position-x: right 30px;
+    background-repeat: repeat;
   }
 
   .wrapper3 {
-    width: 600px; 
-    height: 600px; 
+    width: auto;
+    height: auto;
+    background-image: url("https://media.istockphoto.com/id/808424876/id/foto/bidang-input-kata-sandi-dengan-gembok.jpg?s=1024x1024&w=is&k=20&c=xh9avYwzV6p21z1Oq_BMsLtPen1G67nHSB5StfU0SPk=");
+    background-size: 100% 100%;
+    background-position-x: right 30px;
+    background-repeat: repeat;
   }
-} */
+
+  .login_box {
+    /* display: block; */
+    width: 50%;
+    height: auto;
+    padding: 4.5em 1.5em 2em 1.5em;
+    margin: 10px 0;
+  }
+
+  .login-header {
+    width: 50%;
+    height: auto;
+    font-size: 15px;
+    padding-bottom: 10px;
+  }
+
+  .login-header-forgot {
+    width: 47%;
+    height: auto;
+    font-size: 15px;
+    padding-bottom: 7px;
+  }
+
+  .input-field {
+    height: 35px;
+    font-size: 10px;
+  }
+
+  .input-field-conf {
+    height: 35px;
+    font-size: 10px;
+  }
+
+  .input-field:focus ~ .label,
+  .input-field:valid ~ .label {
+    font-size: 10px;
+    top: -15px;
+    left: 10px;
+  }
+
+  .input-field-conf:focus ~ .labelConf,
+  .input-field-conf:valid ~ .labelConf {
+    font-size: 10px;
+    top: -15px;
+    left: 10px;
+  }
+
+  .input-submit {
+    height: 35px;
+    font-size: 10px;
+  }
+
+  .text {
+    font-size: 70%;
+  }
+
+  .label {
+    font-size: 70%;
+  }
+
+  .labelConf {
+    font-size: 70%;
+  }
+
+  .zoom {
+    margin-left: 5px;
+    margin-bottom: 7px;
+    margin-top: -2px;
+  }
+
+  .error-user{
+    font-size: 10px;
+  }
+
+  .errors{
+    font-size: 10px;
+  }
+}

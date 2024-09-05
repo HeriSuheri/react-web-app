@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link , useHistory} from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { auth } from "../config/firebase";
 import { sendPasswordResetEmail } from "firebase/auth";
 
@@ -46,11 +46,7 @@ function ForgotPassword() {
     <div className="wrapper3">
       <div className="login_box">
         <div className="login-header-forgot">
-          <span
-            style={{ color: "black", fontWeight: "40px", fontSize: "25px" }}
-          >
-            Forgot Password
-          </span>
+          <span>Forgot Password</span>
         </div>
 
         <div className="input_box">
@@ -94,22 +90,24 @@ function ForgotPassword() {
         ) : null}
 
         <div className="regis">
-          <div>Don't have an account ? </div>
+          <div className="text">Don't have an account ? </div>
           <div className="zoom">
             <Link
+              className="text"
               to={pathNameCONFIG.REGISTRASI}
-              style={{ color: "white", marginLeft: "10px" }}
+              style={{ color: "white"}}
             >
               Sign Up
             </Link>
           </div>
         </div>
         <div className="regis">
-          <div>Already have an account ? </div>
+          <div className="text">Already have an account ? </div>
           <div className="zoom">
             <Link
+              className="text"
               to={pathNameCONFIG.LOGIN}
-              style={{ color: "white", marginLeft: "10px" }}
+              style={{ color: "white" }}
             >
               Login
             </Link>

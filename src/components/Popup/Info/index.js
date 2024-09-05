@@ -75,11 +75,11 @@ const SuccessConfirmation = ({
           backgroundColor: "white",
           boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
           zIndex: "1000",
-          "@media screen and (min-width: 565px)": {
-            width: "450px",
-            height: "450px",
-          },
-          "@media screen and (max-width: 564px)": {
+          // "@media screen and (min-width: 768px)": {
+          //   width: "450px",
+          //   height: "450px",
+          // },
+          "@media screen and (max-width: 767px)": {
             width: "50%",
             height: "auto",
           },
@@ -97,11 +97,11 @@ const SuccessConfirmation = ({
               borderRadius: 20,
               position: "relative",
               textAlign: "center",
-              "@media screen and (min-width: 565px)": {
-                width: "400px",
-                height: "400px",
-              },
-              "@media screen and (max-width: 564px)": {
+              // "@media screen and (min-width: 768px)": {
+              //   width: "400px",
+              //   height: "400px",
+              // },
+              "@media screen and (max-width: 767px)": {
                 width: "50%",
                 height: "auto",
               },
