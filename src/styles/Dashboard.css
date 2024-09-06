@@ -53,3 +53,30 @@
   margin-left: -10px;
   transition: 0.3s ease-in-out;
 }
+
+@media screen and (max-width:767px){
+  .center{
+    width: auto;
+    height: auto;
+    background-image: url("https://media.istockphoto.com/id/1849227434/id/foto/hijau-3d-latar-belakang-studio-bg-room-podium-panggung-kosong-produk-dinding-lantai-pola-dapur.jpg?s=1024x1024&w=is&k=20&c=UmyYamK8z087P6rydlNAHtgE8SCeAnda03lJ_yaqNe4=");
+    background-size: 100% 100%;
+    background-position-x: right 30px;
+    background-repeat: repeat;
+    font-size: 2px;
+  }
+
+  .profile{
+    width: 50%;
+    height: auto;
+    /* padding: 2.5em 1.5em 2em 2.5em; */
+  }
+
+  .profile h1{
+    font-size: 15px;
+  }
+
+  .box{
+    font-size: 10px;
+  }
+  
+}

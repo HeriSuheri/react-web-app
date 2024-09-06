@@ -76,7 +76,7 @@ const Dashboard = () => {
           color="warning"
           onClick={handleLogOut}
           style={{
-            fontSize: "15px",
+            fontSize: "12px",
             fontWeight: "bold",
             background: "red",
             borderRadius: "20px",

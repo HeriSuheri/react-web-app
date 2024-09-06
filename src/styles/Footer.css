@@ -4,3 +4,10 @@
   padding: 10px 0px 10px 0px;
   margin-top: 10px;
 }
+
+
+@media screen and (max-width: 767px ) {
+  .wrapperFooter{
+    font-size: 13px;
+  }
+}

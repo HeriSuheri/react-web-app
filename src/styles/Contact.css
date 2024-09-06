@@ -9,6 +9,13 @@
   padding: 50px 0px 50px 0px;
 }
 
+.wrapperContact {
+  width: 100%;
+  margin: auto;
+  position: relative;
+  padding-left: 20px;
+}
+
 .footer {
   width: 100%;
   position: relative;
@@ -16,10 +23,11 @@
   flex-direction: column;
   flex-wrap: wrap;
   margin: auto;
+  margin-left: 10px;
 }
 
 .footer-section {
-  width: 40%;
+  width: 100%;
   margin: 0 10;
   flex: 1 0 5rem;
 }
@@ -119,4 +127,55 @@
 
 .footer-section .join p {
   margin-top: -10px;
+}
+
+@media screen and (max-width: 767px) {
+  .wrapperContact {
+    width: 90%;
+    height: auto;
+    padding-left: 3px;
+  }
+
+  /* .footer {
+    margin-left: 10px;
+  } */
+
+  .footer-section {
+    font-size: 12px;
+  }
+
+  .footer-section .address .wa img {
+    height: 15px;
+    width: 15px;
+  }
+
+  .footer-section .address .email img {
+    height: 15px;
+    width: 15px;
+  }
+
+  .footer-section .join .linkedin img {
+    height: 15px;
+    width: 15px;
+  }
+
+  .footer-section .join .github img {
+    height: 15px;
+    width: 15px;
+  }
+
+  .footer-section .join .instagram img {
+    height: 15px;
+    width: 15px;
+  }
+
+  .footer-section .join .facebook img {
+    height: 15px;
+    width: 15px;
+  }
+
+  .footer-section .join .youtube img {
+    height: 15px;
+    width: 15px;
+  }
 }
