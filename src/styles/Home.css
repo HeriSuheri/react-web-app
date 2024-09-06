@@ -1,3 +1,7 @@
+.wrapper {
+  width: 100%;
+}
+
 .tengah {
   text-align: center;
   width: 100%;
@@ -70,7 +74,24 @@ h2 {
   width: 100%;
 }
 
-@media screen and (max-width: 991.98px) {
+/* @media screen and (max-width: 991.98px) {
+  section {
+    display: block;
+  }
+
+  section img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+} */
+
+@media screen and (max-width: 767px) {
+  .wrapper{
+    width: 80%;
+    height: auto;
+  }
+
   section {
     display: block;
   }
