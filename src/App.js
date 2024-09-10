@@ -27,7 +27,6 @@ const App = () => {
   return (
     <RootContext.Provider value={{ user }}>
       <Switch>
-        {/* <ContainerBN> */}
         <Route exact path={pathNameCONFIG.ROOT_URL} component={Home} />
         <Route exact path={pathNameCONFIG.LOGIN} component={Login} />
         <Route exact path={pathNameCONFIG.REGISTRASI} component={Registrasi} />
@@ -38,10 +37,14 @@ const App = () => {
         />
 
         <PrivateRoute>
-          <Route exact path={pathNameCONFIG.DASHBOARD} component={Dashboard} />
+          <ContainerBN>
+            <Route
+              exact
+              path={pathNameCONFIG.DASHBOARD}
+              component={Dashboard}
+            />
+          </ContainerBN>
         </PrivateRoute>
-
-        {/* </ContainerBN> */}
       </Switch>
     </RootContext.Provider>
   );
