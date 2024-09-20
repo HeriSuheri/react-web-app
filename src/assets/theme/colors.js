@@ -1,0 +1,22 @@
+// collor assets
+export const PrimaryDark = "#004a80";
+export const PrimaryMedium = "#0061A7";
+export const PrimarySoft = "#207dc0";
+// export const PrimaryUltrasoft = "#0387C0";
+export const SecondaryMedium = "#99CC00";
+// export const SecondarySoft = "#D5EF87";
+export const GrayMedium = "#B0BFD3";
+// export const GraySoft = "#E5EDF8";
+export const Dark = "#374062";
+export const GrayUltrasoft = "#F6FAFF";
+// export const YellowHard = "#ED9C00";
+// export const YellowMedium = "#FFD15C";
+// export const YellowSoft = "#FFEFC7";
+export const RedHard = "#E31C23";
+export const RedMedium = "#FF8970";
+// export const RedSoft = "#FFCCC1";
+export const BlueHard = "#137EE1";
+// export const BlueMedium = "#7ABFFF";
+export const BlueMedium1 = "#0061A7";
+// export const BlueSoft = "#E9F4FF";
+export const White = "#fff";

@@ -3,20 +3,41 @@ import { useHistory } from "react-router-dom";
 
 // libraries
 import { Layout, Grid } from "antd";
+import "./layout.css";
+import { makeStyles } from "@mui/styles";
 
 // components
-// import SideBar from "components/BN/TemplateLayout/SideBar";
-// import Header from "components/BN/TemplateLayout/Header";
-// import IdleTimerContainer from "components/BN/IdleContainerTimer";
 import Header from "../components/TemplateLayout/Header";
 import HeaderContext from "../utils/helpers/context/header";
 import Sidebar from "../components/TemplateLayout/Sidebar";
-// import Navbar from "../components/Navbar";
 
 const { Content } = Layout;
 const { useBreakpoint } = Grid;
 
+const useStyles = makeStyles({
+  main: {
+    display: "flex",
+    width: "100%",
+  },
+  header: {
+    position: "fixed",
+    width: "100%",
+    zIndex: "1100",
+  },
+  sidebar: {
+    width: "200px",
+    minHeight: "100vh",
+  },
+  content: {
+    position: "fixed",
+    width: "1150px",
+    minHeight: "100vh",
+    marginLeft: "200px",
+  },
+});
+
 const Container = ({ children }) => {
+  const classes = useStyles();
   const history = useHistory();
   const [isRefreshed, setIsRefreshed] = useState(false);
   const [openSideBar, setOpenSideBar] = useState(false);
@@ -26,7 +47,6 @@ const Container = ({ children }) => {
     setIsRefreshed(!isRefreshed);
   };
 
-
   return (
     <HeaderContext.Provider
       value={{
@@ -35,32 +55,24 @@ const Container = ({ children }) => {
     >
       <Layout
         style={{
-          // minHeight: "100vh",
-          height: "100%",
-          background: "#fff",
+          minHeight: "100vh",
+          // background: "#fff",
+          // backgroundColor: "#F9FAFF",
           fontFamily: "FuturaBkBT",
+          width: "100%",
         }}
       >
-        <div
-          style={{ paddingLeft: "10px", paddingTop: "10px", width: "350px" }}
-        >
-          <Sidebar />
-        </div>
-        <Layout style={{ backgroundColor: "#F9FAFF" }}>
-          <Content
-            style={{
-              height: "100%",
-            }}
-          >
-            {/* <Header
-              onRefresh={onRefresh}
-              handleOpenSidebar={handleOpenSidebar}
-            /> */}
-            <Header />
-            {children}
-            {/* <IdleTimerContainer /> */}
-          </Content>
-        </Layout>
+        <Content>
+          <div className={classes.main}>
+            <div className={classes.header}>
+              <Header />
+            </div>
+            <div className={classes.sidebar}>
+              <Sidebar />
+              <div className={classes.content}>{children}</div>
+            </div>
+          </div>
+        </Content>
       </Layout>
     </HeaderContext.Provider>
   );

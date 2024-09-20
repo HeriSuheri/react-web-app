@@ -1,8 +1,37 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
+import Button from '@mui/material/Button';
+import { makeStyles } from "@mui/styles";
 import PropTypes from "prop-types";
-import { CircularProgress } from "@material-ui/core";
-import classes from "./Button.css";
+import { CircularProgress } from  '@mui/material';
+
+
+const useStyles = makeStyles({
+  root: {
+    fontFamily: "FuturaMdBT",
+    fontSize: 15,
+    lineHeight: "15px",
+    textAlign: "center",
+    textTransform: "capitalize",
+    borderRadius: "8px",
+    boxShadow: "0px 6px 6px 2px rgba(120, 191, 254, 0.12)",
+    padding: "0 20px 0px",
+    "&:hover": {
+      boxShadow: "0px 6px 6px 2px rgba(120, 191, 254, 0.12)",
+    },
+    "&.MuiButton-containedPrimary.Mui-disabled": {
+      backgroundColor: "#BCC8E7",
+      color: "#fff",
+    },
+    "&.MuiButton-text": {
+      boxShadow: "none",
+    },
+    "@media screen and (max-width: 576px)": {
+      width: "84vw !important",
+      marginRight: "0% !important",
+      marginLeft: "0% !important",
+    },
+  },
+});
 
 /* --------------------------------- START --------------------------------- */
 const GeneralButton = ({
@@ -19,11 +48,13 @@ const GeneralButton = ({
   type,
   variant,
 }) => {
+  const classes = useStyles();
+
   let button;
   if (iconPosition === "endIcon") {
     button = (
       <Button
-        className={classes.root}
+        className={className ? `${className} ${classes.root}` : classes.root}
         endIcon={buttonIcon}
         onClick={onClick}
         disabled={disabled || loading}
@@ -42,7 +73,7 @@ const GeneralButton = ({
   } else {
     button = (
       <Button
-        className={classes.root}
+        className={className ? `${className} ${classes.root}` : classes.root}
         startIcon={buttonIcon}
         onClick={onClick}
         disabled={disabled || loading}

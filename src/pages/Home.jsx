@@ -3,7 +3,10 @@ import { useHistory } from "react-router-dom";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { Button } from "@material-ui/core";
+// import { Button } from "@material-ui/core";
+import Button from "@mui/material/Button";
+import { styled } from "@mui/material/styles";
+import { makeStyles } from "@mui/styles";
 
 import { homeSection } from "../data/HomeSection";
 import { coursesSection } from "../data/CoursesSection";
@@ -20,7 +23,34 @@ import "../styles/Home.css";
 import { getLocalStorage } from "../utils/helpers";
 import { pathNameCONFIG } from "../config";
 
+// const useStyles = makeStyles({
+//   button: {
+//     background: "#fc5185",
+//     borderRadius: "20px",
+//     marginTop: "20px",
+//     padding: "15px 20px 15px 20px",
+//     color: "#ffffff",
+//     cursor: "pointer",
+//     fontWeight: "bold",
+//   },
+// });
+
+const ButtonContent = styled(Button)(() => ({
+  background: "#fc5185",
+  borderRadius: "20px",
+  marginTop: "20px",
+  padding: "15px 20px 15px 20px",
+  color: "#ffffff",
+  cursor: "pointer",
+  fontWeight: "bold",
+  "&:hover": {
+    background: "blue",
+    textDecoration: "none",
+  },
+}));
+
 const Home = () => {
+  // const classes = useStyles();
   const history = useHistory();
   const [data, setData] = useState(null);
 
@@ -52,26 +82,13 @@ const Home = () => {
               Nesciunt, nobis.
             </p>
             <p>
-              <Button
+              <ButtonContent
                 variant="contained"
-                // color="primary"
+                color="success"
                 onClick={handleClick}
-                style={{
-                  background: "#fc5185",
-                  borderRadius: "20px",
-                  marginTop: "20px",
-                  padding: "15px 20px 15px 20px",
-                  color: "#ffffff",
-                  cursor: "pointer",
-                  fontWeight: "bold",
-                  "&:hover": {
-                    background: "blue",
-                    textDecoration: "none",
-                  },
-                }}
               >
                 Pelajari Lebih lanjut
-              </Button>
+              </ButtonContent>
             </p>
           </div>
         </section>
@@ -91,26 +108,13 @@ const Home = () => {
               facilis! Delectus exercitationem dolores sapiente?
             </p>
             <p>
-              <Button
+              <ButtonContent
                 variant="contained"
-                // color="primary"
+                color="primary"
                 onClick={handleClick}
-                style={{
-                  background: "blue",
-                  borderRadius: "20px",
-                  marginTop: "20px",
-                  padding: "15px 20px 15px 20px",
-                  color: "#ffffff",
-                  cursor: "pointer",
-                  fontWeight: "bold",
-                  "&:hover": {
-                    background: "orange",
-                    textDecoration: "none",
-                  },
-                }}
               >
                 Pelajari Lebih lanjut
-              </Button>
+              </ButtonContent>
             </p>
           </div>
           <img src={coursesSection.image} />

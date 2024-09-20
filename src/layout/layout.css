@@ -1,0 +1,88 @@
+:root {
+  /* Variables for css styling */
+  --primary-medium: #004d6e;
+  --primary-soft: #06719f;
+  --primary-ultrasoft: #0387c0;
+  --secondary-medium: #99cc00;
+  --secondary-soft: #f3ffcf;
+  --gray-medium: #b0bfd3;
+  --gray-soft: #e5edf8;
+  --gray-ultrasoft: #f7faff;
+  --dark: #364449;
+  --white: #ffffff;
+  --blue-medium: #7abfff;
+  --blue-soft: #e9f4ff;
+  --blue-hard: #137ee1;
+  --red-medium: #ff8970;
+  --red-soft: #ffccc1;
+  --red-hard: #cd3311;
+  --yellow-medium: #ffd15c;
+  --yellow-soft: #ffefc7;
+  --yellow-hard: #ed9c00;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "FuturaBkBT", sans-serif;
+  color: #374062;
+  font-size: 13px;
+  --antd-wave-shadow-color: #1890ff;
+}
+
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #374062;
+  margin: 0;
+}
+
+::selection {
+  background-color: #0061a7;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/**
+   * Remove the inheritance of autofill in Edge, Firefox, and IE.
+   * 1. Remove the inheritance of autofill in Firefox and  IE.
+   */
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+input[data-autocompleted] {
+  background-color: transparent !important;
+}
+
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
+@media screen and (max-width: 750px) {
+  html {
+    zoom: 0.55;
+  }
+}

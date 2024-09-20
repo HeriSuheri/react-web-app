@@ -59,6 +59,7 @@ function Login() {
       })
       .catch((err) => {
         setError(err.message);
+        setPopup(true);
       });
   };
 

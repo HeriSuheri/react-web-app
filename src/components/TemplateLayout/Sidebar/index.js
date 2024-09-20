@@ -4,52 +4,54 @@ import React from "react";
 
 // libraries
 import { Layout } from "antd";
-// import { makeStyles } from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
 
 // components
-import SideBarMenu from "./Sidebarmenu";
+// import SideBarMenu from "./SideBarMenu";
 
 const { Sider } = Layout;
+const useStyles = makeStyles({
+  sider: {
+    fontFamily: "FuturaMdBT",
+    position: "fixed",
+    height: "100%",
+    // width: "400px",
+    left: 0,
+    backgroundColor: "#e5edf8",
+    overflowY: "auto",
+    // zIndex: 1100,
+    "&::-webkit-scrollbar": {
+      display: "none",
+    },
+    // "@media screen and (max-width: 767px)": {
+    //   backgroundColor: "rgba(0, 0, 0, 0.2)",
+    // },
+  },
+  menu: {
+    marginTop: "95px",
+    paddingLeft: "10px",
+    // "@media screen and (max-width: 767px)": {
+    //   marginTop: "95px",
+    // },
+  },
+});
 
 const SideBar = () => {
-  //   const useStyles = makeStyles({
-  //     sider: {
-  //       fontFamily: "FuturaMdBT",
-  //       position: "fixed",
-  //       height: "100%",
-  //       left: 0,
-  //       backgroundColor: "#fff",
-  //       overflowY: "auto",
-  //       zIndex: 1100,
-  //       "&::-webkit-scrollbar": {
-  //         display: "none",
-  //       },
-  //     },
-  //   });
-  //   const classes = useStyles();
+  const classes = useStyles();
 
   return (
+    // <I18nextProvider>
     <Sider
       data-test-id="sidebar-menu"
-      width={150}
-      style={{
-        fontFamily: "FuturaMdBT",
-        position: "fixed",
-        height: "100%",
-        left: 0,
-        backgroundColor: "#fff",
-        overflowY: "auto",
-        zIndex: 1100,
-        "&::-webkit-scrollbar": {
-          display: "none",
-        },
-      }}
+      width={200}
+      className={classes.sider}
     >
-      <div style={{ marginTop: 60 }}>
+      <div className={classes.menu}>
         {/* <SideBarMenu /> */}
-        INI SIDE BAR
+        INI SIDEBAR
       </div>
     </Sider>
+    // </I18nextProvider>
   );
 };
 

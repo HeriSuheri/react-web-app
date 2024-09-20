@@ -293,7 +293,7 @@ a:hover {
 
 /* RESPONSIVE LOGIN - REGISTRASI - FORGOT */
 @media screen and (max-width: 767px) {
-  .wrapper1 {
+  /* .wrapper1 {
     width: auto;
     height: auto;
     background-image: url("https://media.istockphoto.com/id/1777088857/id/foto/konsep-keamanan-digital.jpg?s=1024x1024&w=is&k=20&c=8FVwviAXiGDjOm6xm7emZ4OHB4i1HJfgEUgCyHFn3kg=");
@@ -321,7 +321,6 @@ a:hover {
   }
 
   .login_box {
-    /* display: block; */
     width: 75%;
     height: auto;
     padding: 4.5em 1.5em 2em 1.5em;
@@ -395,5 +394,8 @@ a:hover {
 
   .errors{
     font-size: 10px;
+  } */
+  html {
+    zoom: 0.55;
   }
 }

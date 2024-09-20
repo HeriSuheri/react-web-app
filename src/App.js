@@ -1,4 +1,6 @@
 import React, { useState, useEffect, createContext } from "react";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { makeStyles } from "@mui/styles";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import { pathNameCONFIG } from "./config";
@@ -11,6 +13,8 @@ import Dashboard from "./pages/Dashboard";
 import Registrasi from "./pages/Registrasi";
 import ForgotPassword from "./pages/ForgotPassword";
 import { getLocalStorage } from "./utils/helpers";
+
+import theme from "./assets/theme/theme";
 
 export const RootContext = createContext();
 
@@ -25,28 +29,34 @@ const App = () => {
   }, []);
 
   return (
-    <RootContext.Provider value={{ user }}>
-      <Switch>
-        <Route exact path={pathNameCONFIG.ROOT_URL} component={Home} />
-        <Route exact path={pathNameCONFIG.LOGIN} component={Login} />
-        <Route exact path={pathNameCONFIG.REGISTRASI} component={Registrasi} />
-        <Route
-          exact
-          path={pathNameCONFIG.FORGOT_PASSWORD}
-          component={ForgotPassword}
-        />
+    <ThemeProvider theme={theme}>
+      <RootContext.Provider value={{ user }}>
+        <Switch>
+          <Route exact path={pathNameCONFIG.ROOT_URL} component={Home} />
+          <Route exact path={pathNameCONFIG.LOGIN} component={Login} />
+          <Route
+            exact
+            path={pathNameCONFIG.REGISTRASI}
+            component={Registrasi}
+          />
+          <Route
+            exact
+            path={pathNameCONFIG.FORGOT_PASSWORD}
+            component={ForgotPassword}
+          />
 
-        <PrivateRoute>
-          <ContainerBN>
-            <Route
-              exact
-              path={pathNameCONFIG.DASHBOARD}
-              component={Dashboard}
-            />
-          </ContainerBN>
-        </PrivateRoute>
-      </Switch>
-    </RootContext.Provider>
+          <PrivateRoute>
+            <ContainerBN>
+              <Route
+                exact
+                path={pathNameCONFIG.DASHBOARD}
+                component={Dashboard}
+              />
+            </ContainerBN>
+          </PrivateRoute>
+        </Switch>
+      </RootContext.Provider>
+    </ThemeProvider>
   );
 };
 

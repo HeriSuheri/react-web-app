@@ -5,13 +5,55 @@ import PropTypes from "prop-types";
 
 // libraries
 import { Modal, Fade, Backdrop, SvgIcon, Paper } from "@material-ui/core";
+
+import { makeStyles } from "@mui/styles";
 import { Typography } from "antd";
-import Colors from "../../../utils/helpers/Colors";
-import { ReactComponent as XIcon } from "../../../assets/icon/close-blue.svg";
+// import Colors from "helpers/colors";
+// import { ReactComponent as XIcon } from "assets/icons/BN/close-blue.svg";
 import GeneralButton from "../../Button/GeneralButton";
 
 // assets
-import check from "../../../assets/img/illustrationyellow.png";
+// import check from "../../../../assets/images/BN/illustration.png";
+const useStyles = makeStyles(() => ({
+  modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "auto",
+  },
+  paper: {
+    width: 480,
+    // height: 495,,
+    backgroundColor: "#fff",
+    border: "1px solid #BCC8E7",
+    // padding: closeModal ? 30 : 32,
+    alignItems: "center",
+    borderRadius: 20,
+    position: "relative",
+    textAlign: "center",
+  },
+  content: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  title: {
+    fontFamily: "FuturaMdBT",
+    fontSize: 36,
+    fontWeight: 900,
+    // color: Colors.dark.hard,
+  },
+  xContainer: {
+    display: "flex",
+    justifyContent: "flex-end",
+    "& .close": {
+      "& :hover": {
+        cursor: "pointer",
+      },
+    },
+  },
+}));
 
 const SuccessConfirmation = ({
   isOpen,
@@ -27,7 +69,11 @@ const SuccessConfirmation = ({
   widthMessage,
   subMessages,
 }) => {
+ 
+
+  const classes = useStyles();
   const [titles, setTitles] = useState([]);
+  const [newSubMessages, setNewSubMessages] = useState([]);
 
   useEffect(() => {
     if (title) {
@@ -43,7 +89,7 @@ const SuccessConfirmation = ({
         style={{
           fontFamily: "FuturaBkBT",
           fontSize: 15,
-          color: Colors.dark.hard,
+          // color: Colors.dark.hard,
         }}
       >
         {text}
@@ -56,86 +102,26 @@ const SuccessConfirmation = ({
   return (
     <div>
       <Modal
-        // className={classes.modal}
+        className={classes.modal}
         open={isOpen}
+        // onClose={handleClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          position: "fixed",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: "450px",
-          height: "450px",
-          padding: "20px",
-          borderRadius: 20,
-          backgroundColor: "white",
-          boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-          zIndex: "1000",
-          // "@media screen and (min-width: 768px)": {
-          //   width: "450px",
-          //   height: "450px",
-          // },
-          "@media screen and (max-width: 767px)": {
-            width: "50%",
-            height: "auto",
-          },
-        }}
       >
         <Fade in={isOpen}>
-          <div
-            style={{
-              height,
-              width: "400px",
-              backgroundColor: "#fff",
-              border: "1px solid #BCC8E7",
-              padding: closeModal ? 30 : 32,
-              alignItems: "center",
-              borderRadius: 20,
-              position: "relative",
-              textAlign: "center",
-              // "@media screen and (min-width: 768px)": {
-              //   width: "400px",
-              //   height: "400px",
-              // },
-              "@media screen and (max-width: 767px)": {
-                width: "50%",
-                height: "auto",
-              },
-            }}
-          >
+          <div className={classes.paper} style={{ height }}>
             {closeModal ? (
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "flex-end",
-                  "& .close": {
-                    "& :hover": {
-                      cursor: "pointer",
-                    },
-                  },
-                }}
-              >
-                <XIcon
-                  className="close"
-                  onClick={handleClose}
-                  style={{ cursor: "pointer" }}
-                />
+              <div className={classes.xContainer}>
+                {/* <XIcon className="close" onClick={handleClose} /> */}
               </div>
             ) : null}
-            <div style={{}}>
+            <div className={classes.content}>
               {titles
                 ? titles.map((item) => (
                     <p
+                      className={classes.title}
                       style={{
                         ...(titlefontSize && { fontSize: titlefontSize }),
-                        fontFamily: "FuturaMdBT",
-                        fontSize: 36,
-                        fontWeight: 900,
-                        color: Colors.dark.hard,
                       }}
                     >
                       {item}
@@ -143,7 +129,7 @@ const SuccessConfirmation = ({
                   ))
                 : null}
               <img
-                src={img || check}
+                // src={img || check}
                 alt="check"
                 style={{ marginTop: titles ? 40 : 0 }}
                 width="160"
@@ -153,7 +139,7 @@ const SuccessConfirmation = ({
                   fontSize: 24,
                   marginTop: 20,
                   fontFamily: "FuturaMdBT",
-                  color: Colors.dark.hard,
+                  // color: Colors.dark.hard,
                   width: widthMessage,
                 }}
               >
@@ -163,7 +149,7 @@ const SuccessConfirmation = ({
                 style={{
                   fontFamily: "FuturaBkBT",
                   fontSize: 15,
-                  color: Colors.dark.hard,
+                  // color: Colors.dark.hard,
                 }}
               >
                 {submessage}
@@ -172,7 +158,7 @@ const SuccessConfirmation = ({
               {button ? (
                 <GeneralButton
                   label="OK"
-                  width="200px"
+                  width="380px"
                   height="40px"
                   onClick={handleClose}
                   style={{
@@ -208,12 +194,12 @@ SuccessConfirmation.propTypes = {
 };
 
 SuccessConfirmation.defaultProps = {
-  title: "",
-  message: "",
+  title: "Please Wait For Approval",
+  message: "Saved Successfully",
   submessage: "",
   widthMessage: null,
   height: "auto",
-  img: check,
+  // img: check,
   closeModal: true,
   button: true,
   titlefontSize: 28,
