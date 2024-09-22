@@ -131,7 +131,7 @@
 
 @media screen and (max-width: 767px) {
   .wrapperContact {
-    width: 90%;
+    width: 80%;
     height: auto;
     padding-left: 3px;
   }

@@ -32,7 +32,9 @@ const useStyles = makeStyles({
     position: "fixed",
     width: "1150px",
     minHeight: "100vh",
+    height: "1000px",
     marginLeft: "200px",
+    backgroundColor: "#fff",
   },
 });
 

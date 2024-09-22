@@ -14,13 +14,14 @@ import { setLocalStorage } from "../utils/helpers";
 import "../styles/Login.css";
 import { setLoading } from "../stores/actions/login";
 import PopUpInfo from "../components/Popup/Info";
+import danger from "../assets/img/illustrationred.png";
 
 function Login() {
   const dispatch = useDispatch();
   const history = useHistory();
   // State for the "Remember me" checkbox
   // const [rememberMe, setRememberMe] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState({ open: false, message: "" });
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState(false);
   const [password, setPassword] = useState("");
@@ -28,13 +29,13 @@ function Login() {
   const [currentUser, setCurrentUser] = useState(null);
   const [popup, setPopup] = useState(false);
 
-  useEffect(() => {
-    if (error) {
-      setTimeout(() => {
-        setError("");
-      }, 3500);
-    }
-  }, [error]);
+  // useEffect(() => {
+  //   if (error) {
+  //     setTimeout(() => {
+  //       setError("");
+  //     }, 3500);
+  //   }
+  // }, [error]);
 
   useEffect(() => {
     if (currentUser) {
@@ -58,8 +59,7 @@ function Login() {
         }
       })
       .catch((err) => {
-        setError(err.message);
-        setPopup(true);
+        setError({ open: true, message: err.message });
       });
   };
 
@@ -143,7 +143,7 @@ function Login() {
 
             <div className="forgot">
               <div className="zoom">
-                <Link to={pathNameCONFIG.FORGOT_PASSWORD}  className="text">
+                <Link to={pathNameCONFIG.FORGOT_PASSWORD} className="text">
                   Forgot password?
                 </Link>
               </div>
@@ -156,23 +156,21 @@ function Login() {
               className="input-submit"
               value="Login"
               onClick={handleSubmit}
-              disabled={
-                !email || !password || emailError || passwordError || error
-              }
+              disabled={!email || !password || emailError || passwordError}
               style={{
                 color: "#808080",
                 cursor:
-                  !email || !password || emailError || passwordError || error
+                  !email || !password || emailError || passwordError
                     ? "not-allowed"
                     : "pointer",
               }}
             />
           </div>
-          {error ? (
+          {/* {error ? (
             <div className="error-user">
               <p className="errors">{error}</p>
             </div>
-          ) : null}
+          ) : null} */}
 
           <div className="regis">
             <div className="text">Don't have an account ? </div>
@@ -180,7 +178,7 @@ function Login() {
               <Link
                 className="text"
                 to={pathNameCONFIG.REGISTRASI}
-                style={{ color: "blue"}}
+                style={{ color: "blue" }}
               >
                 Sign Up
               </Link>
@@ -203,12 +201,26 @@ function Login() {
         </div>
       </div>
       <PopUpInfo
+        title= ""
+        message= ""
         isOpen={popup}
         handleClose={() => {
           signOut(auth);
           setPopup(false);
         }}
         submessage="Please verify your email first !"
+      />
+
+      <PopUpInfo
+        title=""
+        message=""
+        isOpen={error?.open}
+        img={danger}
+        handleClose={() => {
+          signOut(auth);
+          setError({ open: false, message: "" });
+        }}
+        submessage={<span style={{ color: "red" }}>{error?.message}</span>}
       />
     </div>
   );

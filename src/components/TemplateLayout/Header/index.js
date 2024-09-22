@@ -19,7 +19,7 @@ const ButtonContent = styled(Button)(() => ({
   color: "#ffffff",
   cursor: "pointer",
   "&:hover": {
-    background: "blue",
+    background: "orange",
     textDecoration: "none",
     border: "2px",
   },

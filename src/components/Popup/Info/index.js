@@ -8,12 +8,12 @@ import { Modal, Fade, Backdrop, SvgIcon, Paper } from "@material-ui/core";
 
 import { makeStyles } from "@mui/styles";
 import { Typography } from "antd";
-// import Colors from "helpers/colors";
-// import { ReactComponent as XIcon } from "assets/icons/BN/close-blue.svg";
+import Colors from "../../../utils/helpers/Colors";
+import { ReactComponent as XIcon } from "../../../assets/icon/close-blue.svg";
 import GeneralButton from "../../Button/GeneralButton";
 
 // assets
-// import check from "../../../../assets/images/BN/illustration.png";
+import check from "../../../assets/img/illustrationyellow.png";
 const useStyles = makeStyles(() => ({
   modal: {
     display: "flex",
@@ -26,7 +26,7 @@ const useStyles = makeStyles(() => ({
     // height: 495,,
     backgroundColor: "#fff",
     border: "1px solid #BCC8E7",
-    // padding: closeModal ? 30 : 32,
+    padding: 30,
     alignItems: "center",
     borderRadius: 20,
     position: "relative",
@@ -42,7 +42,7 @@ const useStyles = makeStyles(() => ({
     fontFamily: "FuturaMdBT",
     fontSize: 36,
     fontWeight: 900,
-    // color: Colors.dark.hard,
+    color: Colors.dark.hard,
   },
   xContainer: {
     display: "flex",
@@ -69,8 +69,6 @@ const SuccessConfirmation = ({
   widthMessage,
   subMessages,
 }) => {
- 
-
   const classes = useStyles();
   const [titles, setTitles] = useState([]);
   const [newSubMessages, setNewSubMessages] = useState([]);
@@ -89,7 +87,7 @@ const SuccessConfirmation = ({
         style={{
           fontFamily: "FuturaBkBT",
           fontSize: 15,
-          // color: Colors.dark.hard,
+          color: Colors.dark.hard,
         }}
       >
         {text}
@@ -104,7 +102,7 @@ const SuccessConfirmation = ({
       <Modal
         className={classes.modal}
         open={isOpen}
-        // onClose={handleClose}
+        onClose={handleClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
       >
@@ -112,7 +110,7 @@ const SuccessConfirmation = ({
           <div className={classes.paper} style={{ height }}>
             {closeModal ? (
               <div className={classes.xContainer}>
-                {/* <XIcon className="close" onClick={handleClose} /> */}
+                <XIcon className="close" onClick={handleClose} />
               </div>
             ) : null}
             <div className={classes.content}>
@@ -129,7 +127,7 @@ const SuccessConfirmation = ({
                   ))
                 : null}
               <img
-                // src={img || check}
+                src={img || check}
                 alt="check"
                 style={{ marginTop: titles ? 40 : 0 }}
                 width="160"
@@ -139,7 +137,7 @@ const SuccessConfirmation = ({
                   fontSize: 24,
                   marginTop: 20,
                   fontFamily: "FuturaMdBT",
-                  // color: Colors.dark.hard,
+                  color: Colors.dark.hard,
                   width: widthMessage,
                 }}
               >
@@ -149,7 +147,7 @@ const SuccessConfirmation = ({
                 style={{
                   fontFamily: "FuturaBkBT",
                   fontSize: 15,
-                  // color: Colors.dark.hard,
+                  color: Colors.dark.hard,
                 }}
               >
                 {submessage}
@@ -167,6 +165,7 @@ const SuccessConfirmation = ({
                     fontSize: 15,
                     position: "aboslute",
                     bottom: 0,
+                    borderRadius: "50px",
                   }}
                 />
               ) : null}
@@ -199,7 +198,7 @@ SuccessConfirmation.defaultProps = {
   submessage: "",
   widthMessage: null,
   height: "auto",
-  // img: check,
+  img: check,
   closeModal: true,
   button: true,
   titlefontSize: 28,

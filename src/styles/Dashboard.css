@@ -5,7 +5,9 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: "#fff";
+  /* overflow-y: scroll;
+  overflow-x: scroll; */
+  /* background-color: "#fff"; */
 }
 
 .profile {
@@ -52,11 +54,12 @@
   transition: 0.3s ease-in-out;
 }
 
-
 @media screen and (max-width: 750px) {
   .center {
     width: 50%;
     height: auto;
+    /* min-height: 100vh; */
+    /* overflow-y: scroll; */
   }
 
   .profile {
@@ -71,5 +74,15 @@
 
   .box {
     font-size: 10px;
-  } 
+  }
+  /*   
+  html {
+    zoom: 0.55;
+  } */
+}
+
+@media screen and (max-height: 750px) {
+  .center {
+    margin-top: 90px;
+  }
 }
