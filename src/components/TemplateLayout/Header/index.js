@@ -8,6 +8,9 @@ import { useHistory } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import { removeLocalStorage } from "../../../utils/helpers";
+import ConfirmPopup from "../../../components/Popup/Confirm";
+import PopUpInfo from "../../../components/Popup/Info";
+import danger from "../../../assets/img/illustrationred.png";
 
 const ButtonContent = styled(Button)(() => ({
   fontSize: "12px",
@@ -27,14 +30,22 @@ const ButtonContent = styled(Button)(() => ({
 
 const Header = () => {
   const history = useHistory();
-  const [error, setError] = useState(null);
+  const [error, setError] = useState({ open: false, message: "" });
+  const [popUpLogOut, setPopUpLogOut] = useState(false);
+  const [loadingLogOut, setLoadingLogOut] = useState(false);
+
   const handleLogOut = () => {
+    setLoadingLogOut(true);
     signOut(auth)
       .then((res) => {
+        setLoadingLogOut(false);
         removeLocalStorage("user");
         history.push(pathNameCONFIG.HOME);
       })
-      .catch((err) => setError(err.message));
+      .catch((err) => {
+        setLoadingLogOut(false);
+        setError({ open: true, message: err.message });
+      });
   };
 
   return (
@@ -47,7 +58,7 @@ const Header = () => {
           <ButtonContent
             variant="outlined"
             color="warning"
-            onClick={handleLogOut}
+            onClick={() => setPopUpLogOut(true)}
             // className="button"
             // style={{
             //   fontSize: "12px",
@@ -71,12 +82,32 @@ const Header = () => {
             Log Out
           </ButtonContent>
         </div>
-        {error ? (
+        {/* {error ? (
           <div className="error-user">
             <p className="errors">{error}</p>
           </div>
-        ) : null}
+        ) : null} */}
       </div>
+      <PopUpInfo
+        title=""
+        message=""
+        img={danger}
+        isOpen={error?.open}
+        handleClose={() => {
+          setError({ open: false, message: "" });
+        }}
+        submessage={<span style={{ color: "red" }}>{error?.message}</span>}
+      />
+
+      <ConfirmPopup
+        isOpen={popUpLogOut}
+        handleClose={() => setPopUpLogOut(false)}
+        onContinue={handleLogOut}
+        title="Confirmation"
+        message="Are you sure want log out?"
+        submessage=""
+        loading={loadingLogOut}
+      />
     </nav>
   );
 };

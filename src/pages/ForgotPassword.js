@@ -5,32 +5,40 @@ import { sendPasswordResetEmail } from "firebase/auth";
 
 import { pathNameCONFIG } from "../config";
 import PopUpInfo from "../components/Popup/Info";
+import danger from "../assets/img/illustrationred.png";
+import { CircularProgress } from "@mui/material";
 
 import "../styles/Login.css";
 
 function ForgotPassword() {
   const history = useHistory();
-  const [error, setError] = useState(null);
+  const [error, setError] = useState({ open: false, message: "" });
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState(false);
   const [popup, setPopup] = useState(false);
+  const [loadingForgot, setLoadingForgot] = useState(false);
 
-  useEffect(() => {
-    if (error) {
-      setTimeout(() => {
-        setError("");
-      }, 3500);
-    }
-  }, [error]);
+  // useEffect(() => {
+  //   if (error) {
+  //     setTimeout(() => {
+  //       setError("");
+  //     }, 3500);
+  //   }
+  // }, [error]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoadingForgot(true);
     setEmailError(false);
     sendPasswordResetEmail(auth, email)
       .then((res) => {
+        setLoadingForgot(false);
         setPopup(true);
       })
-      .catch((err) => setError(err.message));
+      .catch((err) => {
+        setLoadingForgot(false);
+        setError({ open: true, message: err.message });
+      })
   };
 
   const onTypeEmail = (e) => {
@@ -70,24 +78,37 @@ function ForgotPassword() {
           </div>
         ) : null}
 
-        <div className="input_box">
-          <input
-            type="submit"
-            className="input-submit"
-            value="SEND EMAIL"
-            onClick={handleSubmit}
-            disabled={!email || emailError || error}
+        {loadingForgot ? (
+          <div
             style={{
-              color: "#808080",
-              cursor: !email || emailError || error ? "not-allowed" : "pointer",
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: "10px",
             }}
-          />
-        </div>
-        {error ? (
+          >
+            <CircularProgress color="inherit" size={40} />
+          </div>
+        ) : (
+          <div className="input_box">
+            <input
+              type="submit"
+              className="input-submit"
+              value="SEND EMAIL"
+              onClick={handleSubmit}
+              disabled={!email || emailError}
+              style={{
+                color: "#808080",
+                cursor: !email || emailError ? "not-allowed" : "pointer",
+              }}
+            />
+          </div>
+        )}
+
+        {/* {error ? (
           <div className="error-user">
             <p className="errors">{error}</p>
           </div>
-        ) : null}
+        ) : null} */}
 
         <div className="regis">
           <div className="text">Don't have an account ? </div>
@@ -95,7 +116,7 @@ function ForgotPassword() {
             <Link
               className="text"
               to={pathNameCONFIG.REGISTRASI}
-              style={{ color: "white"}}
+              style={{ color: "white" }}
             >
               Sign Up
             </Link>
@@ -115,12 +136,26 @@ function ForgotPassword() {
         </div>
       </div>
       <PopUpInfo
+        title=""
+        message=""
         isOpen={popup}
         handleClose={() => {
           setPopup(false);
           history.push(pathNameCONFIG.LOGIN);
         }}
         submessage="Please verify your email to reset your password !"
+      />
+
+      <PopUpInfo
+        title=""
+        message=""
+        img={danger}
+        isOpen={error?.open}
+        handleClose={() => {
+          setError({ open: false, message: "" });
+          // history.push(pathNameCONFIG.LOGIN);
+        }}
+        submessage={<span style={{ color: "red" }}>{error?.message}</span>}
       />
     </div>
   );

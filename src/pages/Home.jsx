@@ -5,7 +5,9 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 // import { Button } from "@material-ui/core";
 import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
 import { styled } from "@mui/material/styles";
+import { CircularProgress } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
 import { homeSection } from "../data/HomeSection";
@@ -23,17 +25,17 @@ import "../styles/Home.css";
 import { getLocalStorage } from "../utils/helpers";
 import { pathNameCONFIG } from "../config";
 
-// const useStyles = makeStyles({
-//   button: {
-//     background: "#fc5185",
-//     borderRadius: "20px",
-//     marginTop: "20px",
-//     padding: "15px 20px 15px 20px",
-//     color: "#ffffff",
-//     cursor: "pointer",
-//     fontWeight: "bold",
-//   },
-// });
+const useStyles = makeStyles({
+  tableBlank: {
+    width: "100%",
+    height: 416,
+    boxShadow: `0px 3px 10px rgba(188, 200, 231, 0.2)`,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: -10,
+  },
+});
 
 const ButtonContent = styled(Button)(() => ({
   background: "#fc5185",
@@ -50,7 +52,7 @@ const ButtonContent = styled(Button)(() => ({
 }));
 
 const Home = () => {
-  // const classes = useStyles();
+  const classes = useStyles();
   const history = useHistory();
   const [data, setData] = useState(null);
 
@@ -71,6 +73,11 @@ const Home = () => {
       <Navbar />
       <div className="wrapper">
         {/* home  */}
+        {/* {loading ? (
+          <Card className={classes.tableBlank}>
+            <CircularProgress color="primary" size={40} />
+          </Card>
+        ) : null} */}
         <section id="home">
           <img src={homeSection.image} />
           {/* <div className="kolom">{parse(homeSection.content)}</div> */}

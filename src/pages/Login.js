@@ -7,7 +7,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-
+import { CircularProgress } from "@mui/material";
 import { pathNameCONFIG } from "../config";
 import { setLocalStorage } from "../utils/helpers";
 
@@ -28,6 +28,7 @@ function Login() {
   const [passwordError, setPasswordError] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [popup, setPopup] = useState(false);
+  const [loadingLogin, setLoadingLogin] = useState(false);
 
   // useEffect(() => {
   //   if (error) {
@@ -44,21 +45,34 @@ function Login() {
     }
   }, [currentUser]);
 
+  // useEffect(() => {
+  //   if (loadingLogin) {
+  //     setTimeout(() => {
+  //       setLoadingLogin(false);
+  //       history.push(pathNameCONFIG.DASHBOARD);
+  //     }, 3500);
+  //   }
+  // }, [loadingLogin]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoadingLogin(true);
     setEmailError(false);
     setPasswordError(false);
     signInWithEmailAndPassword(auth, email, password)
       .then((res) => {
         if (res?.user.emailVerified) {
+          setLoadingLogin(false);
           onAuthStateChanged(auth, (user) => {
             setCurrentUser(user);
           });
         } else {
+          setLoadingLogin(false);
           setPopup(true);
         }
       })
       .catch((err) => {
+        setLoadingLogin(false);
         setError({ open: true, message: err.message });
       });
   };
@@ -150,22 +164,35 @@ function Login() {
             </div>
           </div>
 
-          <div className="input_box">
-            <input
-              type="submit"
-              className="input-submit"
-              value="Login"
-              onClick={handleSubmit}
-              disabled={!email || !password || emailError || passwordError}
+          {loadingLogin ? (
+            <div
               style={{
-                color: "#808080",
-                cursor:
-                  !email || !password || emailError || passwordError
-                    ? "not-allowed"
-                    : "pointer",
+                display: "flex",
+                justifyContent: "center",
+                marginBottom: "10px",
               }}
-            />
-          </div>
+            >
+              <CircularProgress size={40} />
+            </div>
+          ) : (
+            <div className="input_box">
+              <input
+                type="submit"
+                className="input-submit"
+                value="Login"
+                onClick={handleSubmit}
+                disabled={!email || !password || emailError || passwordError}
+                style={{
+                  color: "#808080",
+                  cursor:
+                    !email || !password || emailError || passwordError
+                      ? "not-allowed"
+                      : "pointer",
+                }}
+              />
+            </div>
+          )}
+
           {/* {error ? (
             <div className="error-user">
               <p className="errors">{error}</p>
@@ -201,8 +228,8 @@ function Login() {
         </div>
       </div>
       <PopUpInfo
-        title= ""
-        message= ""
+        title=""
+        message=""
         isOpen={popup}
         handleClose={() => {
           signOut(auth);

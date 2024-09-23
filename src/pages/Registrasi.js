@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { auth } from "../config/firebase";
+import { CircularProgress } from "@mui/material";
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
@@ -9,6 +10,7 @@ import {
 
 import { pathNameCONFIG } from "../config";
 import PopUpInfo from "../components/Popup/Info";
+import danger from "../assets/img/illustrationred.png";
 
 import "../styles/Login.css";
 
@@ -16,6 +18,7 @@ function Registrasi() {
   const dispatch = useDispatch();
   const history = useHistory();
   const [error, setError] = useState(null);
+  const [errorRegis, setErrorRegis] = useState({ open: false, message: "" });
   const [errorMatchPassword, setErrorMatchPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState(false);
@@ -24,21 +27,22 @@ function Registrasi() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [confPasswordError, setConfPasswordError] = useState(false);
   const [popup, setPopup] = useState(false);
+  const [loadingRegis, setLoadingRegis] = useState(false);
 
-  useEffect(() => {
-    if (error) {
-      setTimeout(() => {
-        setError("");
-      }, 3500);
-    }
-  }, [error]);
+  // useEffect(() => {
+  //   if (error) {
+  //     setTimeout(() => {
+  //       setError("");
+  //     }, 3500);
+  //   }
+  // }, [error]);
 
   const validatePassword = () => {
     let isValid = true;
     if (password !== "" && confirmPassword !== "") {
       if (password !== confirmPassword) {
         isValid = false;
-        setError("Passwords does not match");
+        // setError("Passwords does not match");
       }
     }
     return isValid;
@@ -46,19 +50,29 @@ function Registrasi() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoadingRegis(true);
     setEmailError(false);
     setPasswordError(false);
     setConfPasswordError(false);
     if (validatePassword()) {
+      // setLoadingRegis(false);
       createUserWithEmailAndPassword(auth, email, password)
         .then((res) => {
+          setLoadingRegis(false);
           sendEmailVerification(auth.currentUser)
             .then(() => {
+              setLoadingRegis(false);
               setPopup(true);
             })
-            .catch((err) => setError(err.message));
+            .catch((err) => {
+              setLoadingRegis(false);
+              setErrorRegis({ open: true, message: err.message });
+            });
         })
-        .catch((err) => setError(err.message));
+        .catch((err) => {
+          setLoadingRegis(false);
+          setErrorRegis({ open: true, message: err.message });
+        });
     }
   };
 
@@ -74,7 +88,7 @@ function Registrasi() {
   const onTypePassword = (e) => {
     if (e.target.value) {
       setPasswordError(false);
-      if (e.target.value.length  && e.target.value !== confirmPassword) {
+      if (e.target.value.length && e.target.value !== confirmPassword) {
         setErrorMatchPassword(true);
       } else {
         setErrorMatchPassword(false);
@@ -168,43 +182,53 @@ function Registrasi() {
           </div>
         ) : null}
 
-        <div className="input_box">
-          <input
-            type="submit"
-            className="input-submit"
-            value="Register"
-            onClick={handleSubmit}
-            disabled={
-              !email ||
-              !password ||
-              !confirmPassword ||
-              emailError ||
-              passwordError ||
-              confPasswordError ||
-              errorMatchPassword ||
-              error
-            }
+        {loadingRegis ? (
+          <div
             style={{
-              color: "#808080",
-              cursor:
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: "10px",
+            }}
+          >
+            <CircularProgress color="inherit" size={40} />
+          </div>
+        ) : (
+          <div className="input_box">
+            <input
+              type="submit"
+              className="input-submit"
+              value="Register"
+              onClick={handleSubmit}
+              disabled={
                 !email ||
                 !password ||
                 !confirmPassword ||
                 emailError ||
                 passwordError ||
                 confPasswordError ||
-                errorMatchPassword ||
-                error
-                  ? "not-allowed"
-                  : "pointer",
-            }}
-          />
-        </div>
-        {error ? (
+                errorMatchPassword
+              }
+              style={{
+                color: "#808080",
+                cursor:
+                  !email ||
+                  !password ||
+                  !confirmPassword ||
+                  emailError ||
+                  passwordError ||
+                  confPasswordError ||
+                  errorMatchPassword
+                    ? "not-allowed"
+                    : "pointer",
+              }}
+            />
+          </div>
+        )}
+        {/* {error ? (
           <div className="error-user">
             <p className="errors">{error}</p>
           </div>
-        ) : null}
+        ) : null} */}
         {errorMatchPassword ? (
           <div className="error-user">
             <p className="errors">"Password doesn't match"</p>
@@ -225,12 +249,26 @@ function Registrasi() {
         </div>
       </div>
       <PopUpInfo
+        title=""
+        message=""
         isOpen={popup}
         handleClose={() => {
           setPopup(false);
           history.push(pathNameCONFIG.LOGIN);
         }}
         submessage="Please verify your email to activate your account !"
+      />
+
+      <PopUpInfo
+        title=""
+        message=""
+        img={danger}
+        isOpen={errorRegis?.open}
+        handleClose={() => {
+          setErrorRegis({ open: false, message: "" });
+          // history.push(pathNameCONFIG.LOGIN);
+        }}
+        submessage={<span style={{ color: "red" }}>{errorRegis?.message}</span>}
       />
     </div>
   );

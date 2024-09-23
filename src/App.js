@@ -2,7 +2,7 @@ import React, { useState, useEffect, createContext } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { makeStyles } from "@mui/styles";
 import "./App.css";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch , useLocation} from "react-router-dom";
 import { pathNameCONFIG } from "./config";
 import PrivateRoute from "./config/PrivateRoute";
 
@@ -19,6 +19,7 @@ import theme from "./assets/theme/theme";
 export const RootContext = createContext();
 
 const App = () => {
+  const location = useLocation();
   const [user, setUser] = useState(null);
 
   useEffect(() => {

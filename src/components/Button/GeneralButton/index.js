@@ -26,7 +26,7 @@ const useStyles = makeStyles({
       boxShadow: "none",
     },
     "@media screen and (max-width: 576px)": {
-      width: "84vw !important",
+      width: "44vw !important",
       marginRight: "0% !important",
       marginLeft: "0% !important",
     },
