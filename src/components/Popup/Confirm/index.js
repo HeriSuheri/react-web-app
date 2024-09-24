@@ -39,6 +39,12 @@ const useStyles = makeStyles(() => ({
     fontFamily: "FuturaMdBT",
     fontSize: 28,
   },
+  progress: {
+    display: "flex",
+    justifyContent: "center",
+    bottom: 30,
+    marginTop: 20,
+  },
   button: {
     display: "flex",
     justifyContent: "space-between",
@@ -132,25 +138,32 @@ const ConfirmPopup = ({
             <Typography className={classes.message}>{message}</Typography>
             <p className={classes.desc}>{submessage}</p>
             {additionalText && additionalText}
-            <div className={classes.button}>
-              <ThemeProvider theme={buttonRedTheme}>
+
+            {loading ? (
+              <div className={classes.progress}>
+                <CircularProgress size={40} />
+              </div>
+            ) : (
+              <div className={classes.button}>
+                <ThemeProvider theme={buttonRedTheme}>
+                  <GeneralButton
+                    label="Yes"
+                    width={157.5}
+                    height="40px"
+                    onClick={onContinue}
+                    disabled={!!loading}
+                  />
+                </ThemeProvider>
+
                 <GeneralButton
-                  label={loading ? <CircularProgress size={20} /> : "Yes"}
+                  label="No"
                   width={157.5}
                   height="40px"
-                  onClick={onContinue}
+                  onClick={handleClose}
                   disabled={!!loading}
                 />
-              </ThemeProvider>
-
-              <GeneralButton
-                label="No"
-                width={157.5}
-                height="40px"
-                onClick={handleClose}
-                disabled={!!loading}
-              />
-            </div>
+              </div>
+            )}
           </div>
         </Fade>
       </Modal>

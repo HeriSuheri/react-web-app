@@ -143,7 +143,7 @@ function ForgotPassword() {
           setPopup(false);
           history.push(pathNameCONFIG.LOGIN);
         }}
-        submessage="Please verify your email to reset your password !"
+        submessage="Please verify your email to reset your password, Only registered accounts will receive emails !"
       />
 
       <PopUpInfo
