@@ -33,6 +33,7 @@ import purify from "dompurify";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import CarouselResponsive from "../components/Carousel";
 
 const useStyles = makeStyles({
   tableBlank: {
@@ -188,6 +189,29 @@ const ButtonInfoBack = styled(Button)(() => ({
 //   height: "43px",
 //   lineHeight: "20px",
 // };
+const images1 = [
+  //   "https://media.istockphoto.com/id/1154261893/id/foto/konsep-bahasa-pemrograman-rekayasa-sistem-pengembangan-perangkat-lunak.jpg?s=1024x1024&w=is&k=20&c=2Pa3JbD11WMKeJkWusI1bghb2MkkArKWz8XkTxM2Pqo=",
+  //   "https://www.istockphoto.com/photo/closeup-young-asian-man-software-developers-mentor-leader-manager-talking-to-gm1646501115-533728581?utm_campaign=srp_photos_bottom&utm_content=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fprogramming&utm_medium=affiliate&utm_source=unsplash&utm_term=programming%3A%3Areduced-affiliates%3Aquarter",
+  //   "https://unsplash.com/photos/female-programmer-writing-programming-code-on-laptops-and-desktop-computer-at-cozy-home-workplace-close-up-on-hands-and-keyboard-YXC9PuBblTA",
+  "https://images.unsplash.com/photo-1670057037226-b3d65909424f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1687603921109-46401b201195?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://plus.unsplash.com/premium_photo-1663040543387-cb7c78c4f012?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  // "https://images.unsplash.com/photo-1667372393138-3a5dc3ba517d?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://plus.unsplash.com/premium_photo-1678565879444-f87c8bd9f241?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1535551951406-a19828b0a76b?q=80&w=1466&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1557324232-b8917d3c3dcb?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  //   "https://www.istockphoto.com/id/foto/dewasa-muda-pria-asia-wanita-pengembang-perangkat-lunak-program-pengkodean-di-gm2161506354-581946895",
+  //   "https://media.istockphoto.com/id/1411610158/id/foto/contoh-desain-kode-sumber-bahasa-pemrograman-multi-warna-komposisi-tampak-depan-pada-permukaan.jpg?s=1024x1024&w=is&k=20&c=t_Az-v_qg8BL5gUrfXNZPRDnPbmIkSOXO87sHD0vJQc=",
+  //   "https://www.istockphoto.com/id/foto/programmer-asia-menulis-kode-di-laptop-gm1390285717-447301502",
+  //   "https://www.istockphoto.com/id/foto/pengembang-insinyur-perangkat-lunak-pria-amerika-menggunakan-komputer-laptop-di-gm1894073868-554023921",
+];
+
+const images2 = [
+  "https://img.freepik.com/free-vector/web-development-programmer-engineering-coding-website-augmented-reality-interface-screens-developer-project-engineer-programming-software-application-design-cartoon-illustration_107791-3863.jpg?size=626&ext=jpg&ga=GA1.2.1769275626.1605867161",
+  "https://img.freepik.com/free-vector/online-learning-isometric-concept_1284-17947.jpg?size=626&ext=jpg&ga=GA1.2.1769275626.1605867161",
+];
 
 const style = {
   position: "absolute",
@@ -331,8 +355,8 @@ Download Apps Detikcom Sekarang https://apps.detik.com/detik/.
                 onClick={() => {
                   setIsReaded(false);
                   setCheck(false);
-                  setOpenInfo(false)}
-                }
+                  setOpenInfo(false);
+                }}
                 variant="outlined"
                 // style={btnBackSty}
                 // onClick={() => {
@@ -373,7 +397,10 @@ Download Apps Detikcom Sekarang https://apps.detik.com/detik/.
         <BasicModal open={openNext} handleClose={() => setOpenNext(false)} />
         {/* home  */}
         <section id="home">
-          <img src={homeSection.image} />
+          {/* <img src={homeSection.image} /> */}
+          <Box sx={{ width: 500, marginRight: 20, marginTop: 8 }}>
+            <CarouselResponsive images={images1} />
+          </Box>
           {/* <div className="kolom">{parse(homeSection.content)}</div> */}
           <div className="kolom">
             <p className="deskripsi">Belajar Programming #dirumahaja</p>
@@ -418,7 +445,10 @@ Download Apps Detikcom Sekarang https://apps.detik.com/detik/.
               </ButtonContent>
             </p>
           </div>
-          <img src={coursesSection.image} />
+          {/* <img src={coursesSection.image} /> */}
+          <Box sx={{ width: 500, marginLeft: 5, marginTop: 8, marginRight: 20}}>
+            <CarouselResponsive images={images2} />
+          </Box>
         </section>
         {/* Tutors */}
         <section id="tutors">
