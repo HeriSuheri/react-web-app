@@ -7,9 +7,11 @@ import { pathNameCONFIG } from "./config";
 import PrivateRoute from "./config/PrivateRoute";
 
 import ContainerBN from "./layout";
+import LayoutNew from "./layoutNew";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
+import Order from "./pages/Order";
 import Registrasi from "./pages/Registrasi";
 import ForgotPassword from "./pages/ForgotPassword";
 import { getLocalStorage } from "./utils/helpers";
@@ -47,13 +49,25 @@ const App = () => {
           />
 
           <PrivateRoute>
-            <ContainerBN>
+            {/* <ContainerBN>
               <Route
                 exact
                 path={pathNameCONFIG.DASHBOARD}
                 component={Dashboard}
               />
-            </ContainerBN>
+            </ContainerBN> */}
+             <LayoutNew>
+              <Route
+                exact
+                path={pathNameCONFIG.DASHBOARD}
+                component={Dashboard}
+              />
+               <Route
+                exact
+                path={pathNameCONFIG.ORDER}
+                component={Order}
+              />
+            </LayoutNew>
           </PrivateRoute>
         </Switch>
       </RootContext.Provider>
