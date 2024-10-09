@@ -321,7 +321,7 @@ Download Apps Detikcom Sekarang https://apps.detik.com/detik/.
           <PaperC>
             <React.Fragment>
               <TextStyle className="title-tnc" size="24px" weight={500}>
-                STEP SATU
+                STEP PERTAMA
               </TextStyle>
               <BoxContent>
                 <TncContainer
