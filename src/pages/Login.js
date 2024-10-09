@@ -69,6 +69,7 @@ function Login() {
         } else {
           setLoadingLogin(false);
           setPopup(true);
+          setError({ open: true, message: "Email belum Di Verifikasi" });
         }
       })
       .catch((err) => {

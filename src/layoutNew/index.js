@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { signOut } from "firebase/auth";
 import { auth } from "../config/firebase";
-
+import { styled } from "@mui/material/styles";
 import { createTheme } from "@mui/material/styles";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -29,7 +29,21 @@ import { getLocalStorage, removeLocalStorage } from "../utils/helpers";
 import { useHistory } from "react-router-dom";
 import { pathNameCONFIG } from "../config";
 import ConfirmPopup from "../components/Popup/Confirm";
+import { makeStyles } from "@mui/styles";
+import Paper from "@mui/material/Paper";
+
 import avatar from "../assets/img/avatar5.png";
+
+const useStyles = makeStyles({
+  sidebar: {
+    height: "400vh",
+    background: "blue",
+  },
+});
+
+const contentSide = styled("div")(() => ({
+  width: "60px",
+}));
 
 const NAVIGATION = [
   {
@@ -147,7 +161,7 @@ const demoTheme = createTheme({
   cssVariables: {
     colorSchemeSelector: "data-toolpad-color-scheme",
   },
-  colorSchemes: { light: true, dark: true },
+  colorSchemes: { light: true, dark: false },
   breakpoints: {
     values: {
       xs: 0,
@@ -180,6 +194,7 @@ const demoTheme = createTheme({
 // };
 
 const DashboardLayoutBasic = ({ children }) => {
+  const classes = useStyles();
   // const { user } = useContext(RootContext);
   //   const { window, children } = props;
   const history = useHistory();
